@@ -132,14 +132,23 @@ public class UsuarioDAOTest {
      */
     @Test
     public void testPegarUsuario() throws Exception {
-        System.out.println("pegarUsuario");
+        /*System.out.println("pegarUsuario");
         UsuarioDAO instance = new UsuarioDAO();
         instance.inserir(usuario);
         
         instance = new UsuarioDAO();
         Usuario result = instance.pegarUsuario(usuario.getIdUsuario());
-        assertEquals(usuario, result);
-
+        assertEquals(usuario, result);*/
+UsuarioDAO instance = new UsuarioDAO();
+        instance.inserir(usuario);
+        
+        instance = new UsuarioDAO();
+        Usuario result = instance.pegarUsuario(usuario.getIdUsuario());
+        assertNotNull(result);
+        
+        assertTrue(result.equals(usuario)); // TODO passando, mas nao deveria
+      //  assertTrue(result.getMatricula().equals(usuario.getMatricula()));
+        assertTrue(result.getIdUsuario().equals(usuario.getIdUsuario()));
     }
  
     /**

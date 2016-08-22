@@ -1,5 +1,7 @@
 package banco;
 
+import dao.ModelDAO;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,7 +16,7 @@ import java.sql.Statement;
  *
  * @author Wisley
  */
-public class RefeicaoDAO {
+public class RefeicaoDAO implements ModelDAO {
      private Connection conn;
 
     public RefeicaoDAO() {
@@ -45,6 +47,26 @@ public class RefeicaoDAO {
             throw new RuntimeException(e);
         }
         
+    }
+
+    @Override
+    public boolean inserir(Object object) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean excluir(String matricula) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean editar(Object object) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Array getTodos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
  
