@@ -108,13 +108,23 @@ public class UsuarioDAO {
             
             if (rs.next()){
                usuario = new Usuario();
-               usuario.setIdUsuario(rs.getString("id"));
-               // outros campos....
+               usuario.setMatricula(rs.getString("matricula"));
+               usuario.setIdUsuario(rs.getString("idUsuario"));
+               usuario.setNome(rs.getString("nome"));
+               usuario.setSenha(rs.getString("senha"));
+               usuario.setTipo(rs.getString("tipo"));
+               usuario.setDataNasc(rs.getString("dataNasc"));
+               usuario.setCpf(rs.getString("cpf"));
+               usuario.setCurso(rs.getString("curso"));
+               usuario.setFuncao(rs.getString("funcao"));
+               usuario.setSexo(rs.getString("sexo"));
+               usuario.setTelefone(rs.getString("telefone"));
+               usuario.setEmail(rs.getString("email"));
             }
             
             return usuario;
-        } catch (SQLException ex) {
-           throw new RuntimeException (ex);
+        } catch (SQLException ei) {
+           throw new RuntimeException (ei);
         }
     }
 
@@ -127,62 +137,19 @@ public class UsuarioDAO {
             if (rs.next()){
                usuario = new Usuario();
                usuario.setMatricula(rs.getString("matricula"));
-               // outros campos....
-            }
-            if (rs.next()){
-               usuario = new Usuario();
-               usuario.setIdUsuario(rs.getString("id"));
-               // outros campos....
-            }
-            if (rs.next()){
-               usuario = new Usuario();
+               usuario.setIdUsuario(rs.getString("idUsuario"));
                usuario.setNome(rs.getString("nome"));
-               // outros campos....
-            }
-            if (rs.next()){
-               usuario = new Usuario();
                usuario.setSenha(rs.getString("senha"));
-               // outros campos....
-            }
-            if (rs.next()){
-               usuario = new Usuario();
                usuario.setTipo(rs.getString("tipo"));
-               // outros campos....
-            }
-            if (rs.next()){
-               usuario = new Usuario();
-               usuario.setDataNasc(rs.getString("data nascimento"));
-               // outros campos....
-            }
-            if (rs.next()){
-               usuario = new Usuario();
+               usuario.setDataNasc(rs.getString("dataNasc"));
                usuario.setCpf(rs.getString("cpf"));
-               // outros campos....
-            }
-            if (rs.next()){
-               usuario = new Usuario();
                usuario.setCurso(rs.getString("curso"));
-               // outros campos....
-            }
-            if (rs.next()){
-               usuario = new Usuario();
-               usuario.setFuncao(rs.getString("função"));
-               // outros campos....
-            }
-            if (rs.next()){
-               usuario = new Usuario();
+               usuario.setFuncao(rs.getString("funcao"));
                usuario.setSexo(rs.getString("sexo"));
-               // outros campos....
-            }
-            if (rs.next()){
-               usuario = new Usuario();
                usuario.setTelefone(rs.getString("telefone"));
-               // outros campos....
-            }
-            if (rs.next()){
-               usuario = new Usuario();
                usuario.setEmail(rs.getString("email"));
-               // outros campos....
+               
+               //arrayUsuario.add(usuario);
             }
             
             return usuario;
