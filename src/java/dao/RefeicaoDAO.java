@@ -51,6 +51,7 @@ public class RefeicaoDAO implements ModelDAO {
 
     @Override
     public boolean inserir(Object object) {
+        Refeicao refeicao =  (Refeicao) object;
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
