@@ -1,6 +1,6 @@
-package banco;
+package dao.sql;
 
-import dao.ModelDAO;
+import domain.reserva.Refeicao;
 import java.sql.Array;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -20,7 +20,7 @@ public class RefeicaoDAO implements ModelDAO {
      private Connection conn;
 
     public RefeicaoDAO() {
-        this.conn = new Banco().getConn();
+        this.conn = new Conexao().getConn();
     }
 
     public boolean inserir(Refeicao refeicao) throws SQLException {

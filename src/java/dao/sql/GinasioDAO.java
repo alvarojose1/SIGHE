@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package banco;
+package dao.sql;
 
+import domain.reserva.Ginasio;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,10 +20,10 @@ public class GinasioDAO {
     private Connection conn;
 
     public GinasioDAO() {
-        this.conn = new Banco().getConn();
+        this.conn = new Conexao().getConn();
     }
 
-    public boolean inserir(Ginasio ginasio) throws SQLException {
+    public boolean inserir(Ginasio ginasio)  {
         String sql = "insert into ginasio (matricula, tipoEsporte, qtdBolas, horario, data) values (?, ?, ?, ?, ?);";
         int idEsporte = 0;
         try {
@@ -46,5 +47,21 @@ public class GinasioDAO {
             throw new RuntimeException(e);
         }
         
+    }
+
+    boolean inserir(String ginasio) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    boolean inserir(String ginasio) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    boolean inserir(String ginasio) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    boolean inserir(String ginasio) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

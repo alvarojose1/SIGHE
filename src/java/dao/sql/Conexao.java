@@ -4,7 +4,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package banco;
+package dao.sql;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
@@ -15,14 +15,14 @@ import java.sql.ResultSet;
  *
  * @author Edivania
  */
-public class Banco {
+public class Conexao {
 
     private Statement stmt;
     private ResultSet rs;
     public Connection conn;
-    private static banco.Banco b = new banco.Banco();
+    private static dao.sql.Conexao b = new dao.sql.Conexao();
 
-    public Banco() {
+    public Conexao() {
         String driver = "com.mysql.jdbc.Driver";
         
        // banco = property.get("banco");

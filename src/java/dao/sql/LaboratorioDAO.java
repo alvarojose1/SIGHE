@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package banco;
+package dao.sql;
 
+import domain.reserva.Laboratorio;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,7 +20,7 @@ public class LaboratorioDAO {
     private Connection conn;
 
     public LaboratorioDAO () {
-        this.conn = new Banco().getConn();
+        this.conn = new Conexao().getConn();
     }
 
     public boolean inserir(Laboratorio laboratorio) throws SQLException {

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package banco;
+package dao.sql;
 
+import domain.reserva.Consulta;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,7 +19,7 @@ public class ConsultaDAO {
        private Connection conn;
 
     public ConsultaDAO () {
-        this.conn = new Banco().getConn();
+        this.conn = new Conexao().getConn();
     }
 
     public boolean inserir(Consulta consulta) throws SQLException {

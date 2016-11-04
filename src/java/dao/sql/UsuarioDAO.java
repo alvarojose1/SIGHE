@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package banco;
+package dao.sql;
 
+import domain.Usuario;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,7 +20,7 @@ public class UsuarioDAO {
     private Connection conn;
 
     public UsuarioDAO() {
-        this.conn = new Banco().getConn();
+        this.conn = new Conexao().getConn();
     }
 
     private void inserirAux(Usuario usuario) throws SQLException{
