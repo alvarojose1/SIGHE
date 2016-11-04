@@ -5,6 +5,7 @@
  */
 package banco;
 
+import dao.sql.Conexao;
 import com.mysql.jdbc.Connection;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -39,12 +40,12 @@ public class BancoTest {
     }
 
     /**
-     * Test of getConn method, of class Banco.
+     * Test of getConn method, of class Conexao.
      */
     @Test
     public void testGetConn() {
         System.out.println("getConn");
-        Banco instance = new Banco();
+        Conexao instance = new Conexao();
         Connection result = instance.getConn();
         assertNotNull(result);
     }

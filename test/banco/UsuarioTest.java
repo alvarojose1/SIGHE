@@ -5,6 +5,7 @@
  */
 package banco;
 
+import domain.Usuario;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;

@@ -5,7 +5,10 @@
  */
 package banco;
 
+import dao.sql.Conexao;
+import domain.Usuario;
 import com.mysql.jdbc.Connection;
+import dao.sql.UsuarioDAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -48,7 +51,7 @@ public class UsuarioDAOTest {
         
         
         try {
-            Connection conn = new Banco().getConn();
+            Connection conn = new Conexao().getConn();
             String sql = "DELETE FROM usuario WHERE matricula = 1234";
             java.sql.PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.executeUpdate();
