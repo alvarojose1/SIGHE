@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="java.sql.PreparedStatement"%>
-<%@page import="banco.Banco"%>
+<%@page import=".Banco"%>
 <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>

@@ -96,6 +96,8 @@
                 </fieldset>
             </form>
             <%} else {
+                // Embora o nomes aqui sejam "ginasio", isto refere-se a reservas do ginasio,
+                // e não o ginásio em si.
                 Ginasio ginasio = new Ginasio();
 
                 ginasio.setMatricula(usuLogado.getString("matricula"));
@@ -106,7 +108,7 @@
 
                 GinasioDAO ginasioDAO = new GinasioDAO();
 
-                ginasioDAO.Inserir(ginasio);
+                ginasioDAO.inserir(ginasio);
             %>
             <fieldset class="login1">
                 <p style="text-align: center">RESERVA FEITA COM SUCESSO. <br/><br/>

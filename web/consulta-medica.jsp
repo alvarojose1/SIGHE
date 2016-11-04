@@ -4,6 +4,7 @@
     Author     : Wisley
 --%>
 
+<%@page import="dao.sql.UsuarioDAO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="banco.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
