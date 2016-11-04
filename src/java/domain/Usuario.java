@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package banco;
+package domain;
 
 import static com.sun.xml.bind.v2.schemagen.Util.equal;
 
