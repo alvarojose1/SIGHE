@@ -31,7 +31,7 @@ public class Conexao {
         //user e senha tbm, tudo isso dentro do sighe.conf, sighe.war. PROPIEDADES
         //propet = newPropetyfile("sighe.conf")
         //web server (sighe.war e sighe.conf) e database server(local onde esta o banco de dados)
-        //criar admin, cripitografar as senhas no banco, guthub, issues(problemas) explicar como usar ,
+        //criar admin, cripitografar as senhas no banco, github, issues(problemas) explicar como usar ,
         //trello : acompanhamento de tarefas/listas/quadro/cartoes(tarefas a serem feitas)       
       // String url = "jdbc:mysql://" + ip +  ":" + porta + "/" + banco;
         String url = "jdbc:mysql://localhost:3306/sighe";
