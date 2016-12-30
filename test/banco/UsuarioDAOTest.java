@@ -5,10 +5,10 @@
  */
 package banco;
 
-import dao.sql.Conexao;
-import domain.Usuario;
 import com.mysql.jdbc.Connection;
+import dao.sql.Conexao;
 import dao.sql.UsuarioDAO;
+import domain.Usuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -48,8 +48,9 @@ public class UsuarioDAOTest {
         usuario = new Usuario();
         usuario.setMatricula("1234");
         usuario.setIdUsuario("5");
-        
-        
+        usuario.setTipo("'Professor'");
+        usuario.setTipo("'Aluno'");
+        usuario.setTipo("'Funcionario'");
         try {
             Connection conn = new Conexao().getConn();
             String sql = "DELETE FROM usuario WHERE matricula = 1234";
@@ -230,13 +231,21 @@ public class UsuarioDAOTest {
     @Test
     public void testFiltrarProfessores() throws Exception {
         System.out.println("filtrarProfessores");
+        String tipo = "Professor";
+        String filtro = "";
+        
+        UsuarioDAO instance = new UsuarioDAO();
+        Usuario p = new Usuario();
+        p.setTipo(tipo);
+        instance.filtrarProfessores(filtro);
+        /*System.out.println("filtrarProfessores");
         String filtro = "";
         UsuarioDAO instance = new UsuarioDAO();
         ResultSet expResult = null;
         ResultSet result = instance.filtrarProfessores(filtro);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        */
     }
 
     /**
@@ -250,7 +259,6 @@ public class UsuarioDAOTest {
         ResultSet result = instance.selecionarFuncionarios();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
