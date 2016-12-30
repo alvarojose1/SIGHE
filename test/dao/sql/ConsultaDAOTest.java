@@ -5,6 +5,7 @@
  */
 package dao.sql;
 
+import domain.Usuario;
 import domain.reserva.Consulta;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -18,7 +19,8 @@ import org.junit.Test;
  * @author Eriberto
  */
 public class ConsultaDAOTest {
-    
+    private Usuario usuario;
+    private Consulta consulta;
     public ConsultaDAOTest() {
     }
     
@@ -32,7 +34,14 @@ public class ConsultaDAOTest {
     
     @Before
     public void setUp() {
+     System.out.println("setUp ConsultaTestDAO");
+        
+        usuario = new Usuario();
+        usuario.setMatricula("1234");
+        consulta = new Consulta();
+        consulta.setIdConsulta("1234");
     }
+    
     
     @After
     public void tearDown() {
@@ -44,13 +53,13 @@ public class ConsultaDAOTest {
     @Test
     public void testInserir() throws Exception {
         System.out.println("inserir");
-        Consulta consulta = null;
-        ConsultaDAO instance = new ConsultaDAO();
-        boolean expResult = false;
+        ConsultaDAO instance= null;
+         instance = new ConsultaDAO();
+        boolean expResult = true;
         boolean result = instance.inserir(consulta);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
     }
     
 }

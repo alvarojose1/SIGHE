@@ -53,10 +53,10 @@ public class GinasioDAOTest {
     @Test
     public void testInserir() {
         System.out.println("inserir");
-        //String ginasio = "1234";
+       
         GinasioDAO instance = null;
         instance = new GinasioDAO();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.inserir(ginasio);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.

@@ -5,10 +5,11 @@
  */
 package dao.sql;
 
+import domain.Usuario;
 import domain.reserva.Refeicao;
-import java.sql.Array;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -18,7 +19,8 @@ import org.junit.Test;
  * @author Eriberto
  */
 public class RefeicaoDAOTest {
-    
+    private Usuario usuario;
+    private Refeicao refeicao;
     public RefeicaoDAOTest() {
     }
     
@@ -32,6 +34,12 @@ public class RefeicaoDAOTest {
     
     @Before
     public void setUp() {
+    System.out.println("setUp RefeicaoTestDAO");
+        
+        usuario = new Usuario();
+        usuario.setMatricula("1234");
+        refeicao = new Refeicao();
+        refeicao.setIdRefeicao("1234");
     }
     
     @After
@@ -42,74 +50,17 @@ public class RefeicaoDAOTest {
      * Test of inserir method, of class RefeicaoDAO.
      */
     @Test
-    public void testInserir_Refeicao() throws Exception {
+    public void testInserir() throws Exception {
         System.out.println("inserir");
-        Refeicao refeicao = null;
-        RefeicaoDAO instance = new RefeicaoDAO();
-        boolean expResult = false;
+        RefeicaoDAO instance = null;
+         instance = new RefeicaoDAO();
+        boolean expResult = true;
         boolean result = instance.inserir(refeicao);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
     }
 
-    /**
-     * Test of inserir method, of class RefeicaoDAO.
-     */
-    @Test
-    public void testInserir_Object() {
-        System.out.println("inserir");
-        Object object = null;
-        RefeicaoDAO instance = new RefeicaoDAO();
-        boolean expResult = false;
-        boolean result = instance.inserir(object);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of excluir method, of class RefeicaoDAO.
-     */
-    @Test
-    public void testExcluir() {
-        System.out.println("excluir");
-        String matricula = "";
-        RefeicaoDAO instance = new RefeicaoDAO();
-        boolean expResult = false;
-        boolean result = instance.excluir(matricula);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of editar method, of class RefeicaoDAO.
-     */
-    @Test
-    public void testEditar() {
-        System.out.println("editar");
-        Object object = null;
-        RefeicaoDAO instance = new RefeicaoDAO();
-        boolean expResult = false;
-        boolean result = instance.editar(object);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getTodos method, of class RefeicaoDAO.
-     */
-    @Test
-    public void testGetTodos() {
-        System.out.println("getTodos");
-        RefeicaoDAO instance = new RefeicaoDAO();
-        Array expResult = null;
-        Array result = instance.getTodos();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    
     
 }
