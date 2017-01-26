@@ -4,8 +4,9 @@
     Author     : Wisley
 --%>
 
+<%@page import="domain.Usuario"%>
 <%@page import="java.sql.ResultSet"%>
-<%@page import="banco.UsuarioDAO"%>
+<%@page import="dao.sql.UsuarioDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -21,15 +22,29 @@
     <center>
         <img src="imagens/newbanner.png" class="header"> 
         <%
+            //String idlogado = (String) session.getAttribute("idusuario"); 
+            Usuario usuLogado = (Usuario) session.getAttribute("idusuario");
+          //  UsuarioDAO usuDAO = new UsuarioDAO();
+            //Usuario usuLogado = null;
+            if (usuLogado == null) {
+                response.sendRedirect("index.jsp");
+            } //else {
+            //   usuLogado = usuDAO.pegarUsuario("idlogado");
+               
+               // if (usuLogado.idLogado) {   
+                  //  return this.nome.equals(usuLogado.getNome()) && this.tipo.equals(usuLogado.getTipo());
+   
+           /* 
             String idlogado = (String) session.getAttribute("idusuario");
-            UsuarioDAO usuDAO = new UsuarioDAO();
-            ResultSet usuLogado = null;
             if (idlogado == null) {
                 response.sendRedirect("index.jsp");
             } else {
+                UsuarioDAO usuDAO = new UsuarioDAO();
+                ResultSet usuLogado = null;
                 usuLogado = usuDAO.pegarUsuario(idlogado);
-
-                if (usuLogado.next()) {
+                if (usuLogado.next()) { 
+                    */
+            //}
         %>
 
         <div id='cssmenu'>
@@ -39,13 +54,13 @@
                 <li><a href="horarios.jsp"> Horários </a></li>
                 <li><a href='logar.jsp?acao=sair'> Sair </a></li>
             </ul>
-            <p style="padding-right: 20px; text-align: right;"><%=usuLogado.getString("nome")%> (<%=usuLogado.getString("tipo")%>)</p>
+            <p style="padding-right: 20px; text-align: right;"><%=usuLogado.getNome()%> (<%=usuLogado.getTipo()%>)</p>
         </div>
 
         <div id='corpo'>  
             <table style="text-align: center">
                 <%
-                    if (usuLogado.getString("tipo").equals("Aluno")) {
+                    if (usuLogado.getTipo().equals("Aluno")) {
                 %>
                 <tr>
                     <td style="padding: 0 10px 0 10px;"><a href="refeicao.jsp"><img title="Reservar refeição" onmouseover="this.style.opacity = 1;
@@ -62,7 +77,7 @@
                                     this.filters.alpha.opacity = 50" style="opacity: 0.7;"  src="imagens/cons.jpg" class="imgSetor"/></a></td>
                 </tr>
                 <%
-                } else if (usuLogado.getString("tipo").equals("Professor")) {
+                } else if (usuLogado.getTipo().equals("Professor")) {
                 %>
                 <tr>
                     <td style="padding: 0 10px 0 10px;"><img title="Indisponível para professores" onmouseover="this.style.opacity = 1;
@@ -79,7 +94,7 @@
                                     this.filters.alpha.opacity = 50" style="opacity: 0.7;"  src="imagens/consPB.jpg" class="imgSetor"/></td>
                 </tr>      
                 <%
-                } else if (usuLogado.getString("tipo").equals("Funcionário")) {
+                } else if (usuLogado.getTipo().equals("Funcionário")) {
                 %>
                 <tr>
                     <td style="padding: 0 10px 0 10px;"><img title="Indisponível para funcionários" onmouseover="this.style.opacity = 1;
@@ -97,6 +112,7 @@
                 </tr>  
                 <%
                     }
+}
                 %>               
                 <tr>
                     <th>REFEIÇÃO</th>
@@ -117,7 +133,7 @@
         </div>
         <%
                 }
-            }
+
         %>
     </center>
     <div id="rodape">

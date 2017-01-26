@@ -7,7 +7,7 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
-<%@page import="banco.Banco"%>
+<%@page import="dao.sql.Conexao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,7 +17,7 @@
     </head>
     <body>
         <%
-            Banco b = new Banco();
+            Conexao b = new Conexao();
 
             PreparedStatement ps = null;
             ResultSet rs = null;
@@ -32,6 +32,9 @@
 
                     if (rs.next()) {
                         session.setAttribute("idusuario", rs.getString("idUsuario")); //abrindo sessao
+                        
+                        
+                        
                         session.setMaxInactiveInterval(-1); //limite da sessão infinito
                         response.sendRedirect("inicio.jsp");
                     } else {
