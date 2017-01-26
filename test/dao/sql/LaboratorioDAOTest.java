@@ -52,11 +52,21 @@ public class LaboratorioDAOTest {
     @Test
     public void testInserir() throws Exception {
         System.out.println("inserir");
-        LaboratorioDAO  instance = null;
-        instance = new LaboratorioDAO();
+        LaboratorioDAO  dao = null;
+        dao = new LaboratorioDAO();
         boolean expResult = true;
-        boolean result = instance.inserir(laboratorio);
-        assertEquals(expResult, result);
+        int result = dao.inserir(laboratorio);
+        assertEquals(expResult, result > 0);
+        
+        Laboratorio l = dao.pegarLaboratorio(result);
+         assertEquals(laboratorio.getMatriculaAluno(), l.getMatriculaAluno());
+         assertEquals(laboratorio.getMatriculaProfessor(), l.getMatriculaProfessor());
+         assertEquals(laboratorio.getLaboratorio(), l.getLaboratorio());
+         assertEquals(laboratorio.getAprovacao(), l.getAprovacao());
+         assertEquals(laboratorio.getHorario(), l.getHorario());
+         assertEquals(laboratorio.getData(), l.getData());
+         assertEquals(laboratorio.getTurno(), l.getTurno());
+         
         // TODO review the generated test code and remove the default call to fail.
        
     }

@@ -53,11 +53,17 @@ public class ConsultaDAOTest {
     @Test
     public void testInserir() throws Exception {
         System.out.println("inserir");
-        ConsultaDAO instance= null;
-         instance = new ConsultaDAO();
+        ConsultaDAO dao= null;
+         dao = new ConsultaDAO();
         boolean expResult = true;
-        boolean result = instance.inserir(consulta);
-        assertEquals(expResult, result);
+        int result = dao.inserir(consulta);
+        assertEquals(expResult, result > 0);
+        
+        Consulta c = dao.pegarConsulta(result);
+         assertEquals(consulta.getMatricula(), c.getMatricula());
+         assertEquals(consulta.getMedico(), c.getMedico());
+         assertEquals(consulta.getHora(), c.getHora());
+         assertEquals(consulta.getData(), c.getData());
         // TODO review the generated test code and remove the default call to fail.
        
     }

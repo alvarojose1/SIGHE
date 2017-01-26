@@ -9,10 +9,10 @@ import domain.Usuario;
 import domain.reserva.Ginasio;
 import org.junit.After;
 import org.junit.AfterClass;
-import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 /**
  *
@@ -54,11 +54,19 @@ public class GinasioDAOTest {
     public void testInserir() {
         System.out.println("inserir");
        
-        GinasioDAO instance = null;
-        instance = new GinasioDAO();
+        GinasioDAO dao = null;
+        dao = new GinasioDAO();
         boolean expResult = true;
-        boolean result = instance.inserir(ginasio);
-        assertEquals(expResult, result);
+        int result = dao.inserir(ginasio);
+        assertEquals(expResult, result > 0);
+        
+        Ginasio g = dao.pegarGinasio(result);
+         assertEquals(ginasio.getMatricula(), g.getMatricula());
+         assertEquals(ginasio.getTipoEsporte(), g.getTipoEsporte());
+         assertEquals(ginasio.getQtdBolas(), g.getQtdBolas());
+         assertEquals(ginasio.getHorario(), g.getHorario());
+         assertEquals(ginasio.getData(), g.getData());
+         
         // TODO review the generated test code and remove the default call to fail.
         
     }

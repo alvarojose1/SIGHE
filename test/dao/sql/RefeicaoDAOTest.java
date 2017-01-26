@@ -40,6 +40,7 @@ public class RefeicaoDAOTest {
         usuario.setMatricula("1234");
         refeicao = new Refeicao();
         refeicao.setIdRefeicao("1234");
+        
     }
     
     @After
@@ -52,11 +53,20 @@ public class RefeicaoDAOTest {
     @Test
     public void testInserir() throws Exception {
         System.out.println("inserir");
-        RefeicaoDAO instance = null;
-         instance = new RefeicaoDAO();
+        RefeicaoDAO dao = null;
+         dao = new RefeicaoDAO();
         boolean expResult = true;
-        boolean result = instance.inserir(refeicao);
-        assertEquals(expResult, result);
+        int result = dao.inserir(refeicao);
+        assertEquals(expResult, result > 0);
+        
+        Refeicao r = dao.pegarRefeicao(result);
+        assertEquals(refeicao.getMatricula(), r.getMatricula());
+        assertEquals(refeicao.getTipo(), r.getTipo());
+        assertEquals(refeicao.getJustificativa(), r.getJustificativa());
+        assertEquals(refeicao.getData(), r.getData());
+        
+        
+        
         // TODO review the generated test code and remove the default call to fail.
        
     }
