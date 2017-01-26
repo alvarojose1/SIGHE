@@ -22,7 +22,7 @@ public class ConsultaDAO {
         this.conn = new Conexao().getConn();
     }
 
-    public boolean inserir(Consulta consulta) throws SQLException {
+    public int inserir(Consulta consulta) throws SQLException {
         String sql = "INSERT INTO consulta (matricula, medico, hora, data) VALUES (?, ?, ?, ?);";
         int idCons = 0;
         try {
@@ -38,12 +38,33 @@ public class ConsultaDAO {
 
             rs.close();
             stmt.close();
-            conn.close();
-            return true;
+           // conn.close();
+            return idCons;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         
+    }
+     public Consulta pegarConsulta(int id){
+        try {
+            Consulta consulta = null;
+            java.sql.PreparedStatement stmt = conn.prepareStatement("SELECT * FROM consulta WHERE idConsulta=" + id + ";");
+            ResultSet rs = stmt.executeQuery();
+            
+            if (rs.next()){
+               consulta = new Consulta();
+               consulta.setMatricula(rs.getString("matricula"));
+               consulta.setMedico(rs.getString("medico"));
+               consulta.setHora(rs.getString("hora")); 
+               consulta.setData(rs.getString("data"));
+                
+            }
+            conn.close();
+            return consulta;
+        } catch (SQLException ei) {
+           throw new RuntimeException (ei);
+        }
+    
     }
 }
 

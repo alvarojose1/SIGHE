@@ -23,7 +23,7 @@ public class GinasioDAO {
         this.conn = new Conexao().getConn();
     }
 
-    public boolean inserir(Ginasio ginasio)  {
+    public int inserir(Ginasio ginasio)  {
         String sql = "insert into ginasio (matricula, tipoEsporte, qtdBolas, horario, data) values (?, ?, ?, ?, ?);";
         int idEsporte = 0;
         try {
@@ -41,15 +41,35 @@ public class GinasioDAO {
 
             rs.close();
             stmt.close();
-            conn.close();
-            return true;
+            //conn.close();
+            return idEsporte;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         
     }
 
-    boolean inserir(String ginasio) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   public Ginasio pegarGinasio(int id){
+        try {
+            Ginasio ginasio = null;
+            java.sql.PreparedStatement stmt = conn.prepareStatement("SELECT * FROM ginasio WHERE idGinasio=" + id + ";");
+            ResultSet rs = stmt.executeQuery();
+            
+            if (rs.next()){
+               ginasio = new Ginasio();
+               ginasio.setMatricula(rs.getString("matricula"));
+               ginasio.setTipoEsporte(rs.getString("tipoEsporte"));
+               ginasio.setQtdBolas(rs.getString("qtdBolas"));
+               ginasio.setHorario(rs.getString("horario")); 
+               ginasio.setData(rs.getString("data"));
+               
+               
+            }
+            conn.close();
+            return ginasio;
+        } catch (SQLException ei) {
+           throw new RuntimeException (ei);
+        }
+    
     }
 }

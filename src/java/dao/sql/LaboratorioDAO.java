@@ -23,7 +23,7 @@ public class LaboratorioDAO {
         this.conn = new Conexao().getConn();
     }
 
-    public boolean inserir(Laboratorio laboratorio) throws SQLException {
+    public int inserir(Laboratorio laboratorio) throws SQLException {
         String sql = "INSERT INTO laboratorio (matriculaAluno, matriculaProfessor, laboratorio, aprovacao, horario, data, turno) VALUES (?, ?, ?, ?, ?, ?, ?);";
         int idLaboratorio = 0;
         try {
@@ -42,12 +42,36 @@ public class LaboratorioDAO {
 
             rs.close();
             stmt.close();
-            conn.close();
-            return true;
+            //conn.close();
+            return idLaboratorio;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         
+    }
+    public Laboratorio pegarLaboratorio(int id){
+        try {
+            Laboratorio laboratorio = null;
+            java.sql.PreparedStatement stmt = conn.prepareStatement("SELECT * FROM laboratorio WHERE idLaboratorio=" + id + ";");
+            ResultSet rs = stmt.executeQuery();
+            
+            if (rs.next()){
+               laboratorio = new Laboratorio();
+               laboratorio.setMatriculaAluno(rs.getString("matriculaAluno"));
+               laboratorio.setMatriculaProfessor(rs.getString("matriculaProfessor"));
+               laboratorio.setLaboratorio(rs.getString("laboratorio"));
+               laboratorio.setAprovacao(rs.getString("aprovacao"));
+               laboratorio.setHorario(rs.getString("horario")); 
+               laboratorio.setData(rs.getString("data"));
+               laboratorio.setTurno(rs.getString("turno"));
+               
+            }
+            conn.close();
+            return laboratorio;
+        } catch (SQLException ei) {
+           throw new RuntimeException (ei);
+        }
+    
     }
 }
 

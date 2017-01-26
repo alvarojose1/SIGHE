@@ -1,7 +1,6 @@
 package dao.sql;
 
 import domain.reserva.Refeicao;
-import java.sql.Array;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,14 +15,14 @@ import java.sql.Statement;
  *
  * @author Wisley
  */
-public class RefeicaoDAO implements ModelDAO {
+public class RefeicaoDAO {
      private Connection conn;
 
     public RefeicaoDAO() {
         this.conn = new Conexao().getConn();
     }
 
-    public boolean inserir(Refeicao refeicao) throws SQLException {
+    public int inserir(Refeicao refeicao) throws SQLException {
         String sql = "INSERT INTO refeicao (matricula, tipo, justificativa, data) VALUES (?, ?, ?, ?);";
         int idRefeicao = 0;
         try {
@@ -41,34 +40,35 @@ public class RefeicaoDAO implements ModelDAO {
 
             rs.close();
             stmt.close();
-            conn.close();
-            return true;
+           // conn.close();
+            return idRefeicao;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         
     }
-
-    @Override
-    public boolean inserir(Object object) {
-        Refeicao refeicao =  (Refeicao) object;
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Refeicao pegarRefeicao(int id){
+        try {
+            Refeicao refeicao = null;
+            java.sql.PreparedStatement stmt = conn.prepareStatement("SELECT * FROM refeicao WHERE idRefeicao=" + id + ";");
+            ResultSet rs = stmt.executeQuery();
+            
+            if (rs.next()){
+               refeicao = new Refeicao();
+               refeicao.setMatricula(rs.getString("matricula"));
+               refeicao.setTipo(rs.getString("tipo"));
+               refeicao.setJustificativa(rs.getString("justificativa"));
+               refeicao.setData(rs.getString("data"));               
+               
+            }
+            conn.close();
+            return refeicao;
+        } catch (SQLException ei) {
+           throw new RuntimeException (ei);
+        }
+    
     }
-
-    @Override
-    public boolean excluir(String matricula) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean editar(Object object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Array getTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }
  
 
