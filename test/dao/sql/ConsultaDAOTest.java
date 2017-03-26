@@ -39,7 +39,12 @@ public class ConsultaDAOTest {
         usuario = new Usuario();
         usuario.setMatricula("1234");
         consulta = new Consulta();
-        consulta.setIdConsulta("1234");
+        consulta.setIdConsulta("6");
+        consulta.setMatricula("123564");
+        consulta.setMedico("medico");
+        consulta.setHora("12:56");
+        consulta.setData("1-2-2034");
+    
     }
     
     
@@ -51,7 +56,7 @@ public class ConsultaDAOTest {
      * Test of inserir method, of class ConsultaDAO.
      */
     @Test
-    public void testInserir() throws Exception {
+    public void testInserirEPegarConsulta(){
         System.out.println("inserir");
         ConsultaDAO dao= null;
          dao = new ConsultaDAO();

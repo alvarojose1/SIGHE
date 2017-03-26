@@ -39,7 +39,11 @@ public class RefeicaoDAOTest {
         usuario = new Usuario();
         usuario.setMatricula("1234");
         refeicao = new Refeicao();
-        refeicao.setIdRefeicao("1234");
+        refeicao.setIdRefeicao("1");
+        refeicao.setMatricula("1234");
+        refeicao.setJustificativa("fome");
+        refeicao.setTipo("almoço");
+         refeicao.setData("12-3-2014");
         
     }
     

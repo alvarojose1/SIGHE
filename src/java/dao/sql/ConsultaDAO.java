@@ -22,7 +22,7 @@ public class ConsultaDAO {
         this.conn = new Conexao().getConn();
     }
 
-    public int inserir(Consulta consulta) throws SQLException {
+    public int inserir(Consulta consulta)  {
         String sql = "INSERT INTO consulta (matricula, medico, hora, data) VALUES (?, ?, ?, ?);";
         int idCons = 0;
         try {

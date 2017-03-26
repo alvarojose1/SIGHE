@@ -7,7 +7,7 @@
 <%@page import="java.sql.DriverManager"%>
 <%@page import="javax.swing.text.Document"%>
 <%@page import="java.sql.ResultSet"%>
-<%@page import="banco.*"%>
+<%@page import="dao.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

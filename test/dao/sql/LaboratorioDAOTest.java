@@ -39,7 +39,17 @@ public class LaboratorioDAOTest {
         usuario = new Usuario();
         usuario.setMatricula("1234");
         laboratorio = new Laboratorio();
-        laboratorio.setIdLaboratorio("1234");
+        laboratorio.setIdLaboratorio("2");
+        laboratorio.setMatriculaAluno("123");
+        laboratorio.setMatriculaProfessor("1234");
+        laboratorio.setLaboratorio("redes");
+        laboratorio.setAprovacao("sim");
+        laboratorio.setHorario("12:34");
+        laboratorio.setData("12-3-2014");
+        laboratorio.setTurno("matutino");
+        
+        
+        
     }
     
     @After

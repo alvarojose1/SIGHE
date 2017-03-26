@@ -56,7 +56,8 @@ public class UsuarioDAO {
             java.sql.PreparedStatement stmt1 = conn.prepareStatement("SELECT 1 FROM usuario WHERE matricula=" 
                     + usuario.getMatricula() + ";");
             ResultSet rs1 = stmt1.executeQuery();
-            if (rs1.next()) {
+            if (rs1.next()){
+                System.out.println("fa");
                 return false;
             } else {
                 inserirAux(usuario);
@@ -160,108 +161,164 @@ public class UsuarioDAO {
         }
     }
     
-    public ResultSet selecionarAlunos() throws SQLException {
+    public ArrayList<Usuario> selecionarAlunos()  {
+        try{
         java.sql.PreparedStatement stmt = conn.prepareStatement("SELECT * FROM usuario WHERE tipo = 'Aluno';");
         ResultSet rs = stmt.executeQuery();
-        return rs;
-    }
-
-    public ArrayList<Usuario> filtrarAlunos(String filtro){
-   /*     java.sql.PreparedStatement stmt = conn.prepareStatement("SELECT * FROM usuario WHERE tipo = 'Aluno'"
-                + " AND nome LIKE '%" + filtro + "%' OR matricula LIKE '%" + filtro + "%' OR curso LIKE '%" + filtro + "%';");
-        ResultSet rs = stmt.executeQuery();
-        return rs;
-    }*/
-     try {
-            //Usuario usuario = null;
-            java.sql.PreparedStatement stmt = conn.prepareStatement("SELECT * FROM usuario WHERE tipo = 'Aluno'"
-                + " AND nome LIKE '%" + filtro + "%' OR matricula LIKE '%" + filtro + "%' OR curso LIKE '%" + filtro + "%';");
-            ResultSet rs = stmt.executeQuery();
-            ArrayList<Usuario> a = new ArrayList<>();
-            if (rs.next()){
+        ArrayList<Usuario> a = new ArrayList<>();
+            while(rs.next()){
                Usuario usuario = new Usuario();
                usuario.setTipo(rs.getString("tipo"));
                usuario.setNome(rs.getString("nome"));
                usuario.setMatricula(rs.getString("matricula"));
                usuario.setCurso(rs.getString("curso"));
-              // usuario.setIdUsuario(rs.getString("idUsuario"));
-             // usuario.setFuncao(rs.getString("funcao"));
-              a.add(usuario);
-
+               usuario.setTelefone(rs.getString("telefone"));
+               usuario.setCpf(rs.getString("cpf"));
+               usuario.setDataNasc(rs.getString("dataNasc"));
+               usuario.setEmail(rs.getString("email"));
+               usuario.setSenha(rs.getString("senha"));
+               usuario.setSexo(rs.getString("sexo"));     
+               usuario.setFuncao(rs.getString("funcao"));
+               a.add(usuario);
               }          
             return a;
+        } catch (SQLException ex) {
+           throw new RuntimeException (ex);
+        }
+    }
+
+    public ArrayList<Usuario> filtrarAlunos(String filtro){
+     try {
+            java.sql.PreparedStatement stmt = conn.prepareStatement("SELECT * FROM usuario WHERE tipo = 'Aluno'"
+                + " AND nome LIKE '%" + filtro + "%' OR matricula LIKE '%" + filtro + "%' OR curso LIKE '%" + filtro + "%';");
+            ResultSet rs = stmt.executeQuery();            
+            ArrayList<Usuario> b = new ArrayList<>();
+            while(rs.next()){
+               Usuario usuario = new Usuario();
+               usuario.setTipo(rs.getString("tipo"));
+               usuario.setNome(rs.getString("nome"));
+               usuario.setMatricula(rs.getString("matricula"));
+               usuario.setCurso(rs.getString("curso"));
+               usuario.setTelefone(rs.getString("telefone"));
+               usuario.setCpf(rs.getString("cpf"));
+               usuario.setDataNasc(rs.getString("dataNasc"));
+               usuario.setEmail(rs.getString("email"));
+               usuario.setSenha(rs.getString("senha"));
+               usuario.setSexo(rs.getString("sexo"));     
+               usuario.setFuncao(rs.getString("funcao"));
+               b.add(usuario);
+              }          
+            return b;
      
         } catch (SQLException ei) {
            throw new RuntimeException (ei);
         }
     }
     
-    public ResultSet selecionarProfessores() throws SQLException {
+    public ArrayList<Usuario> selecionarProfessores() {
+       try{
         java.sql.PreparedStatement stmt = conn.prepareStatement("SELECT * FROM usuario WHERE tipo = 'Professor';");
         ResultSet rs = stmt.executeQuery();
-        return rs;
-    }
-
-    public ArrayList<Usuario> filtrarProfessores(String filtro){
-   /*     java.sql.PreparedStatement stmt = conn.prepareStatement("SELECT * FROM usuario WHERE tipo = 'Aluno'"
-                + " AND nome LIKE '%" + filtro + "%' OR matricula LIKE '%" + filtro + "%' OR curso LIKE '%" + filtro + "%';");
-        ResultSet rs = stmt.executeQuery();
-        return rs;
-    }*/
-     try {
-            //Usuario usuario = null;
-            java.sql.PreparedStatement stmt = conn.prepareStatement("SELECT * FROM usuario WHERE tipo = 'Professor'"
-                + " AND nome LIKE '%" + filtro + "%' OR matricula LIKE '%" + filtro + "%' OR curso LIKE '%" + filtro + "%';");
-            ResultSet rs = stmt.executeQuery();
-            ArrayList<Usuario> a = new ArrayList<>();
-            if (rs.next()){
+        ArrayList<Usuario> c = new ArrayList<>();
+            while(rs.next()){
                Usuario usuario = new Usuario();
                usuario.setTipo(rs.getString("tipo"));
                usuario.setNome(rs.getString("nome"));
                usuario.setMatricula(rs.getString("matricula"));
                usuario.setCurso(rs.getString("curso"));
-              // usuario.setIdUsuario(rs.getString("idUsuario"));
-             // usuario.setFuncao(rs.getString("funcao"));
-              a.add(usuario);
-
+               usuario.setTelefone(rs.getString("telefone"));
+               usuario.setCpf(rs.getString("cpf"));
+               usuario.setDataNasc(rs.getString("dataNasc"));
+               usuario.setEmail(rs.getString("email"));
+               usuario.setSenha(rs.getString("senha"));
+               usuario.setSexo(rs.getString("sexo"));     
+               usuario.setFuncao(rs.getString("funcao"));
+               c.add(usuario);
               }          
-            return a;
+            return c;
+        } catch (SQLException ex) {
+           throw new RuntimeException (ex);
+        }
+    }
+
+    public ArrayList<Usuario> filtrarProfessores(String filtro){
+   
+     try {
+            java.sql.PreparedStatement stmt = conn.prepareStatement("SELECT * FROM usuario WHERE tipo = 'Professor'"
+                + " AND nome LIKE '%" + filtro + "%' OR matricula LIKE '%" + filtro + "%' OR curso LIKE '%" + filtro + "%';");
+            ResultSet rs = stmt.executeQuery();            
+            ArrayList<Usuario> d = new ArrayList<>();
+            while(rs.next()){
+               Usuario usuario = new Usuario();
+               usuario.setTipo(rs.getString("tipo"));
+               usuario.setNome(rs.getString("nome"));
+               usuario.setMatricula(rs.getString("matricula"));
+               usuario.setCurso(rs.getString("curso"));
+               usuario.setTelefone(rs.getString("telefone"));
+               usuario.setCpf(rs.getString("cpf"));
+               usuario.setDataNasc(rs.getString("dataNasc"));
+               usuario.setEmail(rs.getString("email"));
+               usuario.setSenha(rs.getString("senha"));
+               usuario.setSexo(rs.getString("sexo"));     
+               usuario.setFuncao(rs.getString("funcao"));
+               d.add(usuario);
+              }          
+            return d;
      
         } catch (SQLException ei) {
            throw new RuntimeException (ei);
         }
     }
 
-    public ResultSet selecionarFuncionarios() throws SQLException {
+    public ArrayList<Usuario> selecionarFuncionarios() {
+        try{
         java.sql.PreparedStatement stmt = conn.prepareStatement("SELECT * FROM usuario WHERE tipo = 'Funcionário';");
         ResultSet rs = stmt.executeQuery();
-        return rs;
-    }
-
-    public ArrayList<Usuario> filtrarFuncionarios(String filtro){
-   /*     java.sql.PreparedStatement stmt = conn.prepareStatement("SELECT * FROM usuario WHERE tipo = 'Aluno'"
-                + " AND nome LIKE '%" + filtro + "%' OR matricula LIKE '%" + filtro + "%' OR curso LIKE '%" + filtro + "%';");
-        ResultSet rs = stmt.executeQuery();
-        return rs;
-    }*/
-     try {
-            //Usuario usuario = null;
-            java.sql.PreparedStatement stmt = conn.prepareStatement("SELECT * FROM usuario WHERE tipo = 'Funcionario'"
-                + " AND nome LIKE '%" + filtro + "%' OR matricula LIKE '%" + filtro + "%' OR funcao LIKE '%" + filtro + "%';");
-            ResultSet rs = stmt.executeQuery();
-            ArrayList<Usuario> a = new ArrayList<>();
-            if (rs.next()){
+       //parece com o filtrar
+        ArrayList<Usuario> e = new ArrayList<>();
+            while(rs.next()){
                Usuario usuario = new Usuario();
                usuario.setTipo(rs.getString("tipo"));
                usuario.setNome(rs.getString("nome"));
                usuario.setMatricula(rs.getString("matricula"));
-               //usuario.setCurso(rs.getString("curso"));
-              // usuario.setIdUsuario(rs.getString("idUsuario"));
+               usuario.setCurso(rs.getString("curso"));
+               usuario.setTelefone(rs.getString("telefone"));
+               usuario.setCpf(rs.getString("cpf"));
+               usuario.setDataNasc(rs.getString("dataNasc"));
+               usuario.setEmail(rs.getString("email"));
+               usuario.setSenha(rs.getString("senha"));
+               usuario.setSexo(rs.getString("sexo"));     
                usuario.setFuncao(rs.getString("funcao"));
-              a.add(usuario);
-
+               e.add(usuario);
               }          
-            return a;
+            return e;
+        }catch(SQLException ei) {
+           throw new RuntimeException (ei);
+        }
+    }
+
+    public ArrayList<Usuario> filtrarFuncionarios(String filtro){
+   try {
+            java.sql.PreparedStatement stmt = conn.prepareStatement("SELECT * FROM usuario WHERE tipo = 'Funcionário'"
+                + " AND nome LIKE '%" + filtro + "%' OR matricula LIKE '%" + filtro + "%' OR curso LIKE '%" + filtro + "%';");
+            ResultSet rs = stmt.executeQuery();            
+            ArrayList<Usuario> f = new ArrayList<>();
+            while(rs.next()){
+               Usuario usuario = new Usuario();
+               usuario.setTipo(rs.getString("tipo"));
+               usuario.setNome(rs.getString("nome"));
+               usuario.setMatricula(rs.getString("matricula"));
+               usuario.setCurso(rs.getString("curso"));
+               usuario.setTelefone(rs.getString("telefone"));
+               usuario.setCpf(rs.getString("cpf"));
+               usuario.setDataNasc(rs.getString("dataNasc"));
+               usuario.setEmail(rs.getString("email"));
+               usuario.setSenha(rs.getString("senha"));
+               usuario.setSexo(rs.getString("sexo"));     
+               usuario.setFuncao(rs.getString("funcao"));
+               f.add(usuario);
+              }          
+            return f;
      
         } catch (SQLException ei) {
            throw new RuntimeException (ei);

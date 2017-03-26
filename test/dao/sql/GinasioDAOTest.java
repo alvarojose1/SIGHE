@@ -9,10 +9,10 @@ import domain.Usuario;
 import domain.reserva.Ginasio;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
 
 /**
  *
@@ -40,7 +40,14 @@ public class GinasioDAOTest {
         usuario = new Usuario();
         usuario.setMatricula("1234");
         ginasio = new Ginasio();
-        ginasio.setIdGinasio("1234");
+        ginasio.setIdGinasio("4");
+        ginasio.setMatricula("12345");
+        ginasio.setTipoEsporte("balé");
+        ginasio.setQtdBolas("0");
+        ginasio.setHorario("12:54");
+        ginasio.setData("12-3-2014");
+        
+        
     }
     
     @After

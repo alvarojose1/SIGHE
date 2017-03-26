@@ -9,9 +9,9 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Date"%>
 
-<%@page import="banco.Banco"%>
-<%@page import="banco.Usuario"%>
-<%@page import="banco.UsuarioDAO"%>
+<%@page import="dao.sql.Conexao"%>
+<%@page import="domain.Usuario"%>
+<%@page import="dao.sql.UsuarioDAO"%>
 <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 
 <head>  
